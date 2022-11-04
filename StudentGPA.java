@@ -4,18 +4,27 @@ private String name;
 private int age;
 private String major;
 private String hobby;
-private double expected_GPA;
-private int spent_time_learn_JAVA;
-
-StudentGPA(String name,int age,String major,String hobby, double expected_GPA, int spent_time_learn_JAVA)
+private double gpa;
+private int time_spent;
+//StudentGPA()
+public StudentGPA()
 {
+this.name="";
+this.gpa=0;
+this.major="";
+this.hobby="";
+this.gpa=0;
+this.time_spent=0;
+}
+public StudentGPA(String name, int age, String major, String hobby, double gpa, int time_spent) {
 	this.name=name;
 	this.age=age;
 	this.major=major;
 	this.hobby=hobby;
-	this.expected_GPA=expected_GPA;
-	this.spent_time_learn_JAVA=spent_time_learn_JAVA;
+	this.gpa=gpa;
+	this.time_spent=time_spent;
 }
+//StudentGPA(String name, etc)
 		//Getter
 public String getName() {
 	return name;
@@ -29,11 +38,11 @@ public String getMajor() {
 public String getHobby() {
 	return hobby;
 }
-public double getExpected_GPA() {
-	return expected_GPA;
+public double getGpa() {
+	return gpa;
 }
-public int getSpent_time_learn_JAVA() {
-	return spent_time_learn_JAVA;
+public int getTime_spent() {
+	return time_spent;
 }
 		//Setter
 public void setName(String name) {
@@ -48,21 +57,32 @@ public void setMajor(String major) {
 public void setHobby(String hobby) {
 	this.hobby=hobby;
 }
-public void setExpected_GPA(double expected_GPA) {
-	this.expected_GPA=expected_GPA;
+public void setGpa(double gpa) {
+	this.gpa=gpa;
 }
-public void setSpent_time_learn_JAVA(int spent_time_learn_JAVA) {
-	this.spent_time_learn_JAVA=spent_time_learn_JAVA;
+public void setTime_spent(int time_spent) {
+	this.time_spent=time_spent;
+}
+public String HonorsEligible() {
+	String Honors;
+	if(gpa>=3.5)
+		Honors="You are Honors Eligible";
+	else
+		Honors="You are not Honors Eligible";
+	return Honors;
 }
 public static void main(String[] args) {
-StudentGPA HonorsEligible = new StudentGPA("Aung", 20, "CS", "Game", 3.66 , 2);
-if(HonorsEligible.expected_GPA>3.5)
-{
-	System.out.println("Eligible for Honors");
-}
-else {
-	System.out.println("Not eligible");
-}
+StudentGPA student1 = new StudentGPA();
+student1.setName("Aung");
+student1.setAge(18);
+student1.setMajor("CS");
+student1.setHobby("Game");
+student1.setGpa(3.8);
+student1.setTime_spent(3);
+System.out.println("Student's honors eligibility check: "+student1.HonorsEligible());
+
+student1.setGpa(3.4);
+System.out.println("Student's honors eligibility check after second year: "+student1.HonorsEligible());
 }
 
 }
